@@ -2,8 +2,7 @@
 
 namespace HabitsBot.DAL.Exceptions
 {
-    public class TransactionFailedException : Exception
+    public class InvalidQueryException : Exception
     {
-
     }
 }
