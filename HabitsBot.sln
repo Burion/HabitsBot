@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot", "HabitsBot\Habi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot.DAL", "HabitsBot.DAL\HabitsBot.DAL.csproj", "{7F81F19A-9AE5-4650-906D-7960C9A466FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot.Tests", "HabitsBot.Tests\HabitsBot.Tests.csproj", "{B62B1274-D03C-484A-91B1-0DDCCBFC5B56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B62B1274-D03C-484A-91B1-0DDCCBFC5B56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B62B1274-D03C-484A-91B1-0DDCCBFC5B56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B62B1274-D03C-484A-91B1-0DDCCBFC5B56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B62B1274-D03C-484A-91B1-0DDCCBFC5B56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
