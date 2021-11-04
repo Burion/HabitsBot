@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot", "HabitsBot\HabitsBot.csproj", "{E5F2C60E-DC42-49E2-91A0-2984DC20AAEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot.DAL", "HabitsBot.DAL\HabitsBot.DAL.csproj", "{7F81F19A-9AE5-4650-906D-7960C9A466FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5F2C60E-DC42-49E2-91A0-2984DC20AAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5F2C60E-DC42-49E2-91A0-2984DC20AAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5F2C60E-DC42-49E2-91A0-2984DC20AAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5F2C60E-DC42-49E2-91A0-2984DC20AAEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F81F19A-9AE5-4650-906D-7960C9A466FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE378935-CFA4-4958-9DB0-F61E96473303}
+	EndGlobalSection
+EndGlobal
