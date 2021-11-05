@@ -80,5 +80,13 @@ namespace HabitsBot.DAL.Infrastructure
 
             return habits.First();
         }
+
+        public Habit GetHabitOrNull(Habit model)
+        {
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
+
+            return habits.Count() > 0 ? habits.First() : null;
+        }
     }
 }

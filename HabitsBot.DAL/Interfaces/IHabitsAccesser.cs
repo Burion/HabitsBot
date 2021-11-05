@@ -12,5 +12,6 @@ namespace HabitsBot.DAL.Interfaces
         Habit DeleteHabitOrNull(Habit model);
         Habit EditHabit(Habit model);
         Habit GetHabit(Habit model);
+        Habit GetHabitOrNull(Habit model);
     }
 }
