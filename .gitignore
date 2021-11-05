@@ -363,4 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # True configuration for project
-HabitsBot\appSettings.json
+appSettings.json
