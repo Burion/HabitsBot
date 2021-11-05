@@ -9,6 +9,7 @@ namespace HabitsBot.DAL.Interfaces
     {
         Habit AddHabit(Habit model);
         Habit DeleteHabit(Habit model);
+        Habit DeleteHabitOrNull(Habit model);
         Habit EditHabit(Habit model);
         Habit GetHabit(Habit model);
     }

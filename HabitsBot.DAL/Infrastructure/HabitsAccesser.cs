@@ -52,6 +52,17 @@ namespace HabitsBot.DAL.Infrastructure
             return habits.First();
         }
 
+        public Habit DeleteHabitOrNull(Habit model)
+        {
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
+
+            var queryToDelete = $"DELETE FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            _dataAccesser.ExecuteQuery(queryToDelete);
+
+            return habits.Count() > 0 ? habits.First() : null;
+        }
+
         public Habit EditHabit(Habit model)
         {
             throw new NotImplementedException();
