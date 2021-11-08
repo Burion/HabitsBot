@@ -1,5 +1,6 @@
 ﻿using HabitsBot.DAL;
 using HabitsBot.DAL.Infrastructure;
+using HabitsBot.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;

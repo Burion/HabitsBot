@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HabitsBot.DAL\HabitsBot.DAL.csproj" />
+    <ProjectReference Include="..\HabitsBot.Helpers\HabitsBot.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
