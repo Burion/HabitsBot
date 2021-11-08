@@ -5,7 +5,7 @@ namespace HabitsBot.Helpers
 {
     public static class ConfigHandler
     {
-        private const string configPath = "appSettingsSample.json";
+        private const string configPath = "appSettings.json";
         public static IConfigurationRoot GetJsonConfigurationFromPath(string path)
         {
             var configBuilder = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile(path);
