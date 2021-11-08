@@ -22,7 +22,7 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit AddHabit(Habit model)
         {
-            var queryToInsert = $"INSERT INTO Habits (UserId, Name) VALUES ({model.Name.SingleQuotesShield()}, {model.UserId.SingleQuotesShield()})";
+            var queryToInsert = $"INSERT INTO Habits (Name, UserId) VALUES ({model.Name.SingleQuotesShield()}, {model.UserId.SingleQuotesShield()})";
             _dataAccesser.ExecuteQuery(queryToInsert);
 
             var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
