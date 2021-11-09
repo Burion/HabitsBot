@@ -18,5 +18,27 @@ namespace HabitsBot.Tests.Helpers
 
             Assert.Equal(shielded, shieldedCorrect);
         }
+
+        [Fact]
+        public void ShieldHTMLTest()
+        {
+            var line = "Some text";
+
+            var shielded = line.ShieldHtmlTag("<b>");
+
+            var shieldedCorrect = "<b>Some text</b>";
+
+            Assert.Equal(shielded, shieldedCorrect);
+        }
+
+        [Fact]
+        public void ShieldHTMLTestException()
+        {
+            var line = "Some text";
+
+            Action shieldedAction = () => line.ShieldHtmlTag("<b");
+
+            Assert.Throws<ArgumentException>(shieldedAction);
+        }
     }
 }
