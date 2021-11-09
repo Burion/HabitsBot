@@ -13,13 +13,11 @@ namespace HabitsBot.TelegramCore.Infrastructure
             _decoration = decoration;
         }
 
-        public override TextMessageModel BuildTextMessage(string message)
+        public override string BuildTextMessage(string message)
         {
-            var model = base.BuildTextMessage(message);
+            var messageToReturn = base.BuildTextMessage(message);
 
-            model.Message = model.Message.ShieldHtmlTag(_decoration);
-
-            return model;
+            return messageToReturn.ShieldHtmlTag(_decoration);
         }
     }
 }
