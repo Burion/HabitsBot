@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HabitsBot.TelegramCore.Interfaces
 {
-    interface ITextMessageBuilder
+    public interface ITextMessageBuilder
     {
         TextMessageModel BuildTextMessage(string message);
     }
