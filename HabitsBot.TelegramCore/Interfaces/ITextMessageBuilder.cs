@@ -7,6 +7,7 @@ namespace HabitsBot.TelegramCore.Interfaces
 {
     public interface ITextMessageBuilder
     {
-        TextMessageModel BuildTextMessage(string message);
+        ITextMessageBuilder BaseBuilder { get; set; }
+        string BuildTextMessage(string message);
     }
 }

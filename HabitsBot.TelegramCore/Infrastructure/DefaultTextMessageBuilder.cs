@@ -9,11 +9,18 @@ namespace HabitsBot.TelegramCore.Infrastructure
 {
     public class DefaultTextMessageBuilder : ITextMessageBuilder
     {
-        public virtual TextMessageModel BuildTextMessage(string message)
-        {
-            var model = new TextMessageModel(message);
+        public ITextMessageBuilder BaseBuilder { get; set; }
 
-            return model;
+        public virtual string BuildTextMessage(string message)
+        {
+            string messageToReturn = message;
+            
+            if(BaseBuilder != null)
+            {
+                messageToReturn = BaseBuilder?.BuildTextMessage(message);
+            }
+
+            return messageToReturn;
         }
     }
 }
