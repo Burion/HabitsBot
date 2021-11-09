@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HabitsBot.Helpers\HabitsBot.Helpers.csproj" />
+    <ProjectReference Include="..\HabitsBot.TelegramCore\HabitsBot.TelegramCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
