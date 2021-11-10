@@ -11,7 +11,8 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 {
     public class HabitsAccesserMongo : IHabitsAccesser
     {
-        IMongoCollection<Habit> habitsCollection;
+        //IMongoCollection<Habit> habitsCollection;
+        private readonly DataAccesserMongo<Habit> _dataAccesserMongo;
 
         public HabitsAccesserMongo()
         {
@@ -22,29 +23,29 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
             var mongoClient = new MongoClient(connString);
 
-            habitsCollection = mongoClient.GetDatabase("HabitsDB").GetCollection<Habit>("HabitsCollection");
+            //habitsCollection = mongoClient.GetDatabase("HabitsDB").GetCollection<Habit>("HabitsCollection");
+            _dataAccesserMongo = new DataAccesserMongo<Habit>("HabitsDB", "HabitsCollection");
         }
+
         public Habit AddHabit(Habit model)
         {
-            habitsCollection.InsertOne(model);
+            var modelToReturn = _dataAccesserMongo.AddItem(model);
 
-            return model;
+            return modelToReturn;
         }
 
         public Habit DeleteHabit(Habit model)
         {
-            var habits = habitsCollection.Find(h => h.Id == model.Id).ToList();
-            habitsCollection.DeleteOne(h => h.Id == model.Id);
+            var deletedHabit = _dataAccesserMongo.DeleteItem(model);
 
-            return habits.First();
+            return deletedHabit;
         }
 
         public Habit DeleteHabitOrNull(Habit model)
         {
-            var habits = habitsCollection.Find(h => h.Id == model.Id).ToList();
-            habitsCollection.DeleteOne(h => h.Id == model.Id);
+            var deletedHabit = _dataAccesserMongo.DeleteItemOrNull(model);
 
-            return habits.Count() > 0 ? habits.First() : null;
+            return deletedHabit;
         }
 
         public Habit EditHabit(Habit model)
@@ -54,16 +55,16 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
         public Habit GetHabit(Habit model)
         {
-            var habits = habitsCollection.Find(h => h.Id == model.Id).ToList();
+            var habit = _dataAccesserMongo.GetItem(model);
 
-            return habits.First();
+            return habit;
         }
 
         public Habit GetHabitOrNull(Habit model)
         {
-            var habits = habitsCollection.Find(h => h.Id == model.Id).ToList();
+            var habit = _dataAccesserMongo.GetItemOrNull(model);
 
-            return habits.Count() > 0 ? habits.First() : null;
+            return habit;
         }
     }
 }
