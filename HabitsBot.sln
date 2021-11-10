@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HabitsBot.Helpers", "Habits
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot.TelegramCore", "HabitsBot.TelegramCore\HabitsBot.TelegramCore.csproj", "{32A3CCB9-95DA-49F5-919F-147B13DD0838}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HabitsBot.Services", "HabitsBot.Services\HabitsBot.Services.csproj", "{77D57DFE-2B21-4E0C-9DF2-9F0F7AA57F5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{32A3CCB9-95DA-49F5-919F-147B13DD0838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32A3CCB9-95DA-49F5-919F-147B13DD0838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32A3CCB9-95DA-49F5-919F-147B13DD0838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D57DFE-2B21-4E0C-9DF2-9F0F7AA57F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D57DFE-2B21-4E0C-9DF2-9F0F7AA57F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D57DFE-2B21-4E0C-9DF2-9F0F7AA57F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D57DFE-2B21-4E0C-9DF2-9F0F7AA57F5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
