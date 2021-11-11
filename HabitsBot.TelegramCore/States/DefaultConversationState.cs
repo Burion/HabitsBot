@@ -1,6 +1,7 @@
 ﻿using HabitsBot.TelegramCore.Infrastructure;
 using HabitsBot.TelegramCore.Interfaces;
 using HabitsBot.TelegramCore.Models;
+using HabitsBot.TelegramCore.States.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,20 @@ namespace HabitsBot.TelegramCore.States
             _handlers.Add(key, handler);
         }
 
+        public override void AddHandler(Action<ConversationDirector, MessageDto> handler, MessageHandleType type)
+        {
+            switch(type)
+            {
+                case MessageHandleType.FreeText:
+                    FreeMessageHandler = handler;
+                    break;
+
+                case MessageHandleType.Error:
+                    ErrorHandler = handler;
+                    break;
+            }
+        }
+
         public override void DeleteHandler(string key)
         {
             _handlers.Remove(key);
@@ -37,11 +52,15 @@ namespace HabitsBot.TelegramCore.States
                 
                 action = () => { handlerToExec.Invoke(director, message); };
             }
-            else
+            else if(FreeMessageHandler != null)
             {
-                action = () => { };
+                action = () => { FreeMessageHandler.Invoke(director, message); };
             }
-
+            else if(ErrorHandler != null)
+            {
+                action = () => { ErrorHandler.Invoke(director, message); };
+            }
+                
             return action;
         }
     }
