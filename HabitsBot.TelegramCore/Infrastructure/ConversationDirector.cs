@@ -11,7 +11,7 @@ namespace HabitsBot.TelegramCore.Infrastructure
     public class ConversationDirector
     {
         internal TelegramBotClient BotClient { get; }
-        internal ConversationState CurrentState { get; set; }
+        public ConversationState CurrentState { get; set; }
 
         public ConversationDirector(string botToken)
         {
@@ -26,8 +26,19 @@ namespace HabitsBot.TelegramCore.Infrastructure
         public void InitializeReceiving()
         {
             BotClient.StartReceiving();
+        }
 
-            BotClient.OnMessage += (e, a) => CurrentState.ExecuteState(this, new MessageDto(a.Message))();
+        public virtual void InitializeOnMessageHandlers(params Action[] actions)
+        {
+            foreach(var action in actions)
+            {
+                BotClient.OnMessage += (e, a) => action();
+            }
+
+            BotClient.OnMessage += (e, a) =>
+            {
+                CurrentState.ExecuteState(this, new MessageDto(a.Message))();
+            };
         }
 
         public void ShutDown()
