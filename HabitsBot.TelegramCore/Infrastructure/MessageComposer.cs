@@ -13,9 +13,9 @@ namespace HabitsBot.TelegramCore.Infrastructure
         private readonly TelegramBotClient _botClient;
         private readonly MessageSummary _messageSummary;
 
-        public MessageComposer(TelegramBotClient botClient, MessageSummary messageSummary)
+        public MessageComposer(ConversationDirector director, MessageSummary messageSummary)
         {
-            _botClient = botClient;
+            _botClient = director.BotClient;
             _messageSummary = messageSummary;
         }
 
