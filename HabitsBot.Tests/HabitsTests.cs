@@ -38,7 +38,7 @@ namespace HabitsBot.Tests
                 Assert.True(false);
             }
 
-            var correctHabit = new Habit() { Name = habitName, UserId = userId };
+            var correctHabit = new Habit() { Name = habitName, ChatId = userId };
             Assert.Equal(habits.First(), correctHabit);
         }
 
@@ -59,7 +59,7 @@ namespace HabitsBot.Tests
                 Assert.True(false);
             }
 
-            var correctHabit = new Habit() { Name = habitNameEdited, UserId = userIdEdited };
+            var correctHabit = new Habit() { Name = habitNameEdited, ChatId = userIdEdited };
             Assert.Equal(habits.First(), correctHabit);
         }
 

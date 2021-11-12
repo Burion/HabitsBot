@@ -22,7 +22,7 @@ namespace HabitsBot.Tests
         public HabitsAccesserMongoTests()
         {
             _habitsAccesser = new HabitsAccesserMongo();
-            model = new Habit() { Name = habitName, UserId = userId };
+            model = new Habit() { Name = habitName, ChatId = userId };
         }
 
         [Fact]

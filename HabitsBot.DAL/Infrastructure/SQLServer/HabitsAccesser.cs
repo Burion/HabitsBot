@@ -8,6 +8,7 @@ using System.Text;
 using System.Linq;
 using HabitsBot.DAL.Exceptions;
 using HabitsBot.Tests.Helpers;
+using System.Linq.Expressions;
 
 namespace HabitsBot.DAL.Infrastructure
 {
@@ -22,10 +23,10 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit AddHabit(Habit model)
         {
-            var queryToInsert = $"INSERT INTO Habits (Name, UserId) VALUES ({model.Name.SingleQuotesShield()}, {model.UserId.SingleQuotesShield()})";
+            var queryToInsert = $"INSERT INTO Habits (Name, UserId) VALUES ({model.Name.SingleQuotesShield()}, {model.ChatId.SingleQuotesShield()})";
             _dataAccesser.ExecuteQuery(queryToInsert);
 
-            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
 
             if(habits.Count() != 1)
@@ -38,7 +39,7 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit DeleteHabit(Habit model)
         {
-            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
             
             if (habits.Count() != 1)
@@ -46,7 +47,7 @@ namespace HabitsBot.DAL.Infrastructure
                 throw new InvalidQueryException();
             }
 
-            var queryToDelete = $"DELETE FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToDelete = $"DELETE FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             _dataAccesser.ExecuteQuery(queryToDelete);
 
             return habits.First();
@@ -54,10 +55,10 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit DeleteHabitOrNull(Habit model)
         {
-            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
 
-            var queryToDelete = $"DELETE FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToDelete = $"DELETE FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             _dataAccesser.ExecuteQuery(queryToDelete);
 
             return habits.Count() > 0 ? habits.First() : null;
@@ -70,7 +71,7 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit GetHabit(Habit model)
         {
-            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
 
             if (habits.Count() != 1)
@@ -83,10 +84,25 @@ namespace HabitsBot.DAL.Infrastructure
 
         public Habit GetHabitOrNull(Habit model)
         {
-            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.UserId.SingleQuotesShield()}";
+            var queryToSelect = $"SELECT * FROM Habits WHERE Name={model.Name.SingleQuotesShield()} AND UserId={model.ChatId.SingleQuotesShield()}";
             var habits = _dataAccesser.ExecuteQuery<Habit>(queryToSelect);
 
             return habits.Count() > 0 ? habits.First() : null;
+        }
+
+        public IEnumerable<Habit> GetHabits(Habit model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Habit> GetHabits(Expression<Func<Habit, bool>> predicate)
+        {            
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Habit> GetHabits(Predicate<Habit> predicate)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace HabitsBot.Tests
         public HabitsAccesserTests()
         {
             _habitsAccesser = new HabitsAccesser();
-            model = new Habit() { Name = habitName, UserId = userId };
+            model = new Habit() { Name = habitName, ChatId = userId };
         }
 
         [Fact]
