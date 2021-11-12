@@ -1,6 +1,7 @@
 ﻿using HabitsBot.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace HabitsBot.DAL.Interfaces
@@ -12,6 +13,8 @@ namespace HabitsBot.DAL.Interfaces
         Habit DeleteHabitOrNull(Habit model);
         Habit EditHabit(Habit model);
         Habit GetHabit(Habit model);
+        IEnumerable<Habit> GetHabits(Habit model);
+        IEnumerable<Habit> GetHabits(Expression<Func<Habit, bool>> predicate);
         Habit GetHabitOrNull(Habit model);
     }
 }

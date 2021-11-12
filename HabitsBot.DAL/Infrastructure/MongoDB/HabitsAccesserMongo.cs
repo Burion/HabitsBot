@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace HabitsBot.DAL.Infrastructure.MongoDB
@@ -59,12 +60,23 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
             return habit;
         }
+        public IEnumerable<Habit> GetHabits(Expression<Func<Habit, bool>> predicate)
+        {
+            var habits = _dataAccesserMongo.GetItems(predicate);
+
+            return habits;
+        }
 
         public Habit GetHabitOrNull(Habit model)
         {
             var habit = _dataAccesserMongo.GetItemOrNull(model);
 
             return habit;
+        }
+
+        public IEnumerable<Habit> GetHabits(Habit model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
