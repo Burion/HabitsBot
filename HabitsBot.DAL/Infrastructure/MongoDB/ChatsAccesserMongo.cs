@@ -50,7 +50,9 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
         public Chat EditChat(Chat model)
         {
-            throw new NotImplementedException();
+            var editedChat = _dataAccesserMongo.EditItem(model);
+
+            return editedChat;
         }
 
         public Chat GetChat(Chat model)
