@@ -1,9 +1,11 @@
 ﻿using HabitsBot.DAL.Models;
 using HabitsBot.Helpers;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace HabitsBot.DAL.Infrastructure.MongoDB
@@ -62,6 +64,22 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
             var items = itemsCollection.Find(h => h.Id == model.Id).ToList();
 
             return items.First();
+        }
+
+        public IEnumerable<T> GetItems(T model)
+        {
+            var items = itemsCollection.Find(h => h.Id == model.Id).ToList();
+
+            return items;
+        }
+
+        public IEnumerable<T> GetItems(Expression<Func<T, bool>> expression)
+        {
+            var filter = Builders<T>.Filter.Where(expression);
+
+            var items = itemsCollection.Find(expression).ToList();
+
+            return items;
         }
 
         public T GetItemOrNull(T model)
