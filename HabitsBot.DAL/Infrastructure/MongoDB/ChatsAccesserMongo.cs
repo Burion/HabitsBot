@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HabitsBot.DAL.Infrastructure.MongoDB
 {
-    class ChatsAccesserMongo : IChatsAccesser
+    public class ChatsAccesserMongo : IChatsAccesser
     {
         //private readonly IMongoCollection<Chat> _chatsCollection;
         private readonly DataAccesserMongo<Chat> _dataAccesserMongo;

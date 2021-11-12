@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HabitsBot.DAL.Interfaces
 {
-    interface IChatsAccesser
+    public interface IChatsAccesser
     {
         Chat AddChat(Chat model);
         Chat DeleteChat(Chat model);
