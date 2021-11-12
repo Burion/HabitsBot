@@ -49,7 +49,11 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
         public T EditItem(T model)
         {
-            throw new NotImplementedException();
+            itemsCollection.ReplaceOne(c => c.Id == model.Id, model);
+
+            var items = itemsCollection.Find(h => h.Id == model.Id).ToList();
+
+            return items.Count() > 0 ? items.First() : null;
         }
 
         public T GetItem(T model)
