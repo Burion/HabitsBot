@@ -30,11 +30,11 @@ namespace HabitsBot.TelegramCore.Infrastructure
 
         //public Action<ConversationDirector, string> ResolveConversationStateDelegate { get; set; }
 
-        public virtual void InitializeOnMessageHandlers(params Action[] actions)
+        public virtual void InitializeOnMessageHandlers(params Handler[] handlers)
         {
-            foreach (var action in actions)
+            foreach (var handler in handlers)
             {
-                BotClient.OnMessage += (e, a) => action();
+                BotClient.OnMessage += (e, a) => handler.ExecuteHandler(this, new MessageDto(a.Message));
             }
 
             BotClient.OnMessage += (e, a) =>
