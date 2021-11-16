@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Telegram.Bot.Args;
+using Telegram.Bot.Types;
 
 namespace HabitsBot.TelegramCore.States
 {
@@ -13,16 +14,16 @@ namespace HabitsBot.TelegramCore.States
     {
         public ConversationState()
         {
-            _handlers = new Dictionary<string, Action<ConversationDirector, MessageDto>>();
+            _handlers = new Dictionary<string, Handler>();
         }
 
-        protected readonly Dictionary<string, Action<ConversationDirector, MessageDto>> _handlers;
+        protected readonly Dictionary<string, Handler> _handlers;
 
-        public abstract void AddHandler(string key, Action<ConversationDirector, MessageDto> handler);
-        public abstract void AddHandler(Action<ConversationDirector, MessageDto> handler, MessageHandleType type);
+        public abstract void AddHandler(string key, Handler handler);
+        public abstract void AddHandler(Handler handler, MessageHandleType type);
         public abstract void DeleteHandler(string key);
         public abstract Action ExecuteState(ConversationDirector director, MessageDto message);
-        protected Action<ConversationDirector, MessageDto> FreeMessageHandler { get; set; }
-        protected Action<ConversationDirector, MessageDto> ErrorHandler { get; set; }
+        protected Handler FreeMessageHandler { get; set; }
+        protected Handler ErrorHandler { get; set; }
     }
 }
