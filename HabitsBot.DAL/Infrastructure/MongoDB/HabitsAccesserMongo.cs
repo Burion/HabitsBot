@@ -30,6 +30,7 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
         public Habit AddHabit(Habit model)
         {
+            model.Id = model.Name.GetHashCode().ToString();
             var modelToReturn = _dataAccesserMongo.AddItem(model);
 
             return modelToReturn;

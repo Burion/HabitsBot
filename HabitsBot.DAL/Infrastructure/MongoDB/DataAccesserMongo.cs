@@ -28,7 +28,6 @@ namespace HabitsBot.DAL.Infrastructure.MongoDB
 
         public T AddItem(T model)
         {
-            model.Id = model.GetHashCode().ToString();
             itemsCollection.InsertOne(model);
 
             return model;
